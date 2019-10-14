@@ -252,14 +252,14 @@ open class DigitInputView: UIView {
         // .oneTimeCode content type available on iOS 12 and above devices
         // One time code
        
-        if isOneTimeCode {
-            if #available(iOS 12.0, *) {
+        if #available(iOS 12.0, *) {
+            if isOneTimeCode {
                 textField?.textContentType = .oneTimeCode
+            } else {
+                textField?.textContentType = nil
             }
         }
-        else{
-            textField?.textContentType = nil
-        }
+        
         
         // Since this function isn't called frequently, we just remove everything
         // and recreate them. Don't need to optimize it.
