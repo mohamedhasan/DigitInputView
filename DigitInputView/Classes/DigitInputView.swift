@@ -55,6 +55,26 @@ open class DigitInputView: UIView {
         
     }
     
+    public func resetDigitInput() -> Bool {
+        guard let textField = self.textField else {
+            return false
+        }
+
+        textField.text = ""
+
+        for label in self.labels {
+            self.changeText(of: label, newText: "", true)
+        }
+
+        for (_, underline) in self.underlines.enumerated() {
+            underline.backgroundColor = bottomBorderColor
+        }
+
+        self.underlines.first?.backgroundColor = nextDigitBottomBorderColor
+
+        return true
+    }
+    
     /**
      The color of the line under next digit
      */
